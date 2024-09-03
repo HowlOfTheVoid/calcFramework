@@ -53,14 +53,40 @@ function getJsonData(pathAndFileName) {
 /**
  * @function readDirectoryContents
  * @description Wrapper for calling readDirectorySynchronously, as it doesn't return anything, but works with a global variable.
- * @param {string} directory Path to be scanned.
- * @returns {object} Object with an array of files in folder and subfolders.
+ * @param {string} directory The path to be scanned
+ * @returns {array<string>} An array of strings containing a list of all files in the foler and all sub-folders.
  * @author Ethan Graupmann
  * @date 9/3/2024
  */
 function readDirectoryContents(directory) {
     // Set function name, log beginning of function.
     let functionName = readDirectoryContents.name;
+    console.log(`Begin: ${namespacePrefix}${functionName} function.`);
+    console.log(`directory is: ${directory}.`);
+
+    let filesFound = [];
+    // Resolve path on local system
+    directory = path.resolve(directory);
+    readDirectorySynchronously(directory);
+    filesFound = filesCollection; // Copy to local variable.
+    filesCollection = undefined; // Clear it to avoid corrupting other file operations.
+    filesCollection = [];
+
+    console.log(`filesFound is: ${JSON.stringify(filesFound)}`)
+    console.log(`End: ${namespacePrefix}${functionName} function.`);
+    return filesFound;
+}
+
+/**
+ * @function readDirectorySynchronously
+ * @description 
+ * @param {string} directory Path to be scanned.
+ * @author Ethan Graupmann
+ * @date 9/3/2024
+ */
+function readDirectorySynchronously(directory) {
+    // Set function name, log beginning of function.
+    let functionName = readDirectorySynchronously.name;
     console.log(`Begin: ${namespacePrefix}${functionName} function.`);
     console.log(`directory is: ${directory}.`);
 
@@ -116,7 +142,6 @@ function readDirectoryContents(directory) {
         });
     }
     console.log(`End: ${namespacePrefix}${functionName} function.`);
-    return filesCollection;
 };
 
 /**
