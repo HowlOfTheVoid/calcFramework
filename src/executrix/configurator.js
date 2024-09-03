@@ -22,26 +22,26 @@ let namespacePrefix = `executrix.${baseFileName}.`
  * @author Ethan Graupmann
  * @date 9/3/2024
  */
-function setConfigurationSettings(configurationName, configurationValue) {
+function setConfigurationSetting(configurationName, configurationValue) {
     // Set function name, log beginning of function.
-    let functionName = setConfigurationSettings.name;
+    let functionName = setConfigurationSetting.name;
     console.log(`Begin: ${namespacePrefix}${functionName} function.`);
     console.log(`Configuration Name is: ${configurationName}.`);
     console.log(`Configuration Value is: ${configurationValue}.`);
 
-    let configuratioNDataRoot = D['configuration'];
+    let configurationDataRoot = D['configuration'];
     if (!configurationDataRoot) {
         D['configuration'] = {};
         configurationDataRoot = D['configuration'];
     }
-    configurationDataRoot[configurationName] = D['configuration'];
+    configurationDataRoot[configurationName] = configurationValue;
 
     console.log(`End: ${namespacePrefix}${functionName} function.`);
     
 };
 
 /**
- * @function getConfigurationSettings
+ * @function getConfigurationSetting
  * @description Gets a configuration value based on the configuration name.
  * @param {string} configurationName The key for the configuration setting.
  * @returns {string|integer|boolean|double} The value of whatever was stored in D[configurationName].
@@ -55,7 +55,6 @@ function getConfigurationSetting(configurationName) {
     console.log(`Configuration Name is: ${configurationName}.`);
 
     let returnConfigurationValue;
-
     if (D['configuration'] !== undefined) {
         if (D['configuration'][configurationName] !== undefined) {
             returnConfigurationValue = D['configuration'][configurationName];

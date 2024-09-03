@@ -10,7 +10,7 @@
  * @copyright Copyright © 2024-_ by Ethan Graupmann, All rights reserved
  */
 
-let dataBroker = require('../executrix/fileOperations');
+let fileOperations = require('../executrix/fileOperations');
 let configurator = require('../executrix/configurator');
 let path = require('path');
 let baseFileName = path.basename(module.filename, path.extname(module.filename));

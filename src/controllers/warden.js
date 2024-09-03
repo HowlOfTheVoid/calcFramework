@@ -50,7 +50,7 @@ function processRootPath(configData) {
             resolvedPath = resolvedPath + '\\' + pathElement + '\\';
             break loop1;
         } else {
-            resolvedPath = resolvesPath + '\\' + pathElement;
+            resolvedPath = resolvedPath + '\\' + pathElement;
         }
     }
     // &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&

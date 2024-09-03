@@ -36,6 +36,7 @@ function setupConfiguration(appConfigPath, frameworkConfigPath) {
     configurator.setConfigurationSetting('appConfigPath', appConfigPath);
     configurator.setConfigurationSetting('frameworkConfigPath', frameworkConfigPath);
 
+
     let allAppConfigData = {};
     let allFrameworkConfigData = {};
 
@@ -51,4 +52,8 @@ function setupConfiguration(appConfigPath, frameworkConfigPath) {
     console.log(`All Framework Config Data is: ${JSON.stringify(allFrameworkConfigData)}`);
     console.log(`End: ${namespacePrefix}${functionName} function.`);
 
+}
+
+module.exports = {
+    ['setupConfiguration']: (appConfigPath, frameworkConfigPath) => setupConfiguration(appConfigPath, frameworkConfigPath)
 }

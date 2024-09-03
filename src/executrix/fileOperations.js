@@ -16,7 +16,7 @@ let fs = require('fs');
 let path = require('path');
 let filesCollection = [];
 const directoriesToSkip = ['browser_components', 'node_modules', 'www', 'platforms', 'Release', 'Documentation', 'Recycle', 'Trash'];
-let enablefilesListLimit = false;
+let enableFilesListLimit = false;
 let filesListLimit = -1;
 let hitFileLimit = false;
 
@@ -64,9 +64,86 @@ function readDirectoryContents(directory) {
     console.log(`Begin: ${namespacePrefix}${functionName} function.`);
     console.log(`directory is: ${directory}.`);
 
+    if (hitFileLimit === false) {
+        directory = path.resolve(directory);
+        let currentDirectoryPath = directory;
+        let currentDirectory = '';
+        try {
+            currentDirectory = fs.readdirSync(currentDirectoryPath, 'UTF8');
 
+        } catch (err) {
+            try {
+                fs.mkdirSync(currentDirectoryPath);
+                currentDirectory = fs.readdirSync(currentDirectoryPath, 'UTF8');
+            } catch (err2) {
+                console.log("ERROR: " + err.message);
+                console.log("DEEPER ERROR: " + err2.message);
+            }
+        }
+        currentDirectory.forEach(file => {
+            let filesShouldBeSkipped = directoriesToSkip.indexOf(file) > -1;
+            let pathOfCurrentItem = directory + '//' + file;
 
-    console.log(`parsedData is: ${JSON.stringify(parsedData)}`);
+            try {
+                if (!filesShouldBeSkipped && fs.statSync(pathOfCurrentItem).isFile()) {
+                    if (enableFilesListLimit === true && filesListLimit > 0) {
+                        if (filesCollection.length <= filesListLimit) {
+                            // console.log(`Haven't hit file limit yet.`);
+                            // console.log(`${filesCollection.length} <= ${filesListLimit}`);
+                            filesCollection.push(pathOfCurrentItem);
+                            // console.log(`filesCollection is: ${JSON.stringify(filesCollection)}`);
+                        } else {
+                            // console.log(`File limit hit! At ${filesCollection.length} on file ${pathOfCurrentItem}`);
+                            hitFileLimit = true;
+                            return;
+                        }
+                    } else {
+                        // console.log(`Adding file old way.`);
+                        filesCollection.push(pathOfCurrentItem);
+                    }
+                } else if (!filesShouldBeSkipped) {
+                    // Due to the differences between how Mac/Linux and Windows handles paths, this will attempt to catch
+                    //    both situations.
+                    // Ideal situation would be to detect which OS, then handle appropriately.
+                    let directoryPath = '';
+                    directoryPath = path.resolve(directory + '//' + file);
+                    console.log(`Directory path is: ${directoryPath}`);
+                    readDirectorySynchronously(directoryPath);
+                }
+            } catch (err) {
+                console.log(`ERROR: Invalid access to ${pathOfCurrentItem} : ` + err.message);
+            }
+        });
+    }
     console.log(`End: ${namespacePrefix}${functionName} function.`);
-    return parsedData;
+    return filesCollection;
 };
+
+/**
+ * @function cleanRootPath
+ * @description Takes application root path and cleans it to give real root path
+ * @returns {string} Real root / Top-level path for application.
+ * @NOTE Problematic bercause init functions are contained in lower level folders.
+ *  This helps with organization and overall project scalability and reusability.
+ * @author Ethan Graupmann
+ * @date 9/3/2024
+ */
+function cleanRootPath() {
+    // Set function name, log beginning of function.
+    let functionName = cleanRootPath.name;
+    console.log(`Begin: ${namespacePrefix}${functionName} function.`);
+
+    let rootPath;
+
+    console.log(`rootPath is: ${rootPath}`);
+    console.log(`End: ${namespacePrefix}${functionName} function.`);
+    return rootPath;
+
+}
+
+module.exports = {
+    ['getJsonData']: (pathAndFileName) => getJsonData(pathAndFileName),
+    ['readDirectoryContents']: (directory) => readDirectoryContents(directory),
+    ['readDirectorySynchronously']: (directory) => readDirectorySynchronously
+    
+}

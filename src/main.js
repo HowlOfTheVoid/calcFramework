@@ -31,7 +31,7 @@ function initFramework(clientConfiguration) {
 
     let appRootPath = warden.processRootPath(clientConfiguration);
     clientConfiguration['appRootPath'] = appRootPath;
-    clientConfiguration['appConfigPath'] = appRootPath + clientConfiguration['appConfigReferencePath'];
+    clientConfiguration['appConfigPath'] = appRootPath + clientConfiguration['appConfigReference'];
     clientConfiguration['frameworkConfigPath'] = __dirname + '//resources//configuration';
     warden.initFrameworkSchema(clientConfiguration);
 
