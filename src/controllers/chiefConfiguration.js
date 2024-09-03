@@ -29,9 +29,9 @@ let namespacePrefix = `framework.${baseFileName}.`
 function setupConfiguration(appConfigPath, frameworkConfigPath) {
     // Set function name, log beginning of function.
     let functionName = setupConfiguration.name;
-    console.log(`Begin: ${namespacePrefix}${functionName} function.`);
-    console.log(`App Config Path is: ${appConfigPath}.`);
-    console.log(`Framework Config Path is: ${frameworkConfigPath}.`);
+    // console.log(`Begin: ${namespacePrefix}${functionName} function.`);
+    // console.log(`App Config Path is: ${appConfigPath}.`);
+    // console.log(`Framework Config Path is: ${frameworkConfigPath}.`);
 
     configurator.setConfigurationSetting('appConfigPath', appConfigPath);
     configurator.setConfigurationSetting('frameworkConfigPath', frameworkConfigPath);
@@ -48,9 +48,9 @@ function setupConfiguration(appConfigPath, frameworkConfigPath) {
 
     // TODO: Merge AppConfig and FrameworkConfig Data.
 
-    console.log(`All App Config Data is: ${JSON.stringify(allAppConfigData)}`);
-    console.log(`All Framework Config Data is: ${JSON.stringify(allFrameworkConfigData)}`);
-    console.log(`End: ${namespacePrefix}${functionName} function.`);
+    // console.log(`All App Config Data is: ${JSON.stringify(allAppConfigData)}`);
+    // console.log(`All Framework Config Data is: ${JSON.stringify(allFrameworkConfigData)}`);
+    // console.log(`End: ${namespacePrefix}${functionName} function.`);
 
 }
 

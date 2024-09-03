@@ -26,14 +26,14 @@ let namespacePrefix = `executrix.${baseFileName}.`;
 function getNowMoment(formatting) {
     // Set function name, log beginning of function.
     let functionName = getNowMoment.name;
-    console.log(`Begin: ${namespacePrefix}${functionName} function.`);
-    console.log(`App Config Path is: ${appConfigPath}.`);
+    // console.log(`Begin: ${namespacePrefix}${functionName} function.`);
+    // console.log(`App Config Path is: ${appConfigPath}.`);
 
     let returnStamp = '';
     returnStamp = moment().format(formatting);
 
-    console.log(`returnStamp is: ${returnStamp}`);
-    console.log(`End: ${namespacePrefix}${functionName} function.`);
+    // console.log(`returnStamp is: ${returnStamp}`);
+    // console.log(`End: ${namespacePrefix}${functionName} function.`);
     return returnStamp;
 };
 
@@ -49,14 +49,14 @@ function getNowMoment(formatting) {
 function computeDeltaTime(startTime, endTime) {
     // Set function name, log beginning of function.
     let functionName = computeDeltaTime.name;
-    console.log(`Begin: ${namespacePrefix}${functionName} function.`);
-    console.log(`startTime is: ${startTime}.`);
-    console.log(`endTime is: ${endTime}.`);
+    // console.log(`Begin: ${namespacePrefix}${functionName} function.`);
+    // console.log(`startTime is: ${startTime}.`);
+    // console.log(`endTime is: ${endTime}.`);
 
     let difference;
 
-    console.log(`returnStamp is: ${returnStamp}`);
-    console.log(`End: ${namespacePrefix}${functionName} function.`);
+    // console.log(`returnStamp is: ${returnStamp}`);
+    // console.log(`End: ${namespacePrefix}${functionName} function.`);
     return difference;
 
 };

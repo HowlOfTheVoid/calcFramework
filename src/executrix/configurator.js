@@ -51,8 +51,8 @@ function setConfigurationSetting(configurationName, configurationValue) {
 function getConfigurationSetting(configurationName) {
     // Set function name, log beginning of function.
     let functionName = getConfigurationSetting.name;
-    console.log(`Begin: ${namespacePrefix}${functionName} function.`);
-    console.log(`Configuration Name is: ${configurationName}.`);
+    // console.log(`Begin: ${namespacePrefix}${functionName} function.`);
+    // console.log(`Configuration Name is: ${configurationName}.`);
 
     let returnConfigurationValue;
     if (D['configuration'] !== undefined) {
@@ -64,8 +64,8 @@ function getConfigurationSetting(configurationName) {
     } else {
         returnConfigurationValue = undefined;
     }
-    console.log(`returnConfigurationValue is: ${returnConfigurationValue}`);
-    console.log(`End: ${namespacePrefix}${functionName} function.`);
+    // console.log(`returnConfigurationValue is: ${returnConfigurationValue}`);
+    // console.log(`End: ${namespacePrefix}${functionName} function.`);
     return returnConfigurationValue;
 };
 

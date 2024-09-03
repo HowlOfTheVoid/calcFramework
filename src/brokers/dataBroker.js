@@ -106,8 +106,8 @@ function loadAllJsonData(filesToLoad, contextName) {
     parsedDataFile = multiMergedData;
     
 
-    console.log(`parsedDataFile is: ${JSON.stringify(parsedDataFile)}`);
-    console.log(`End: ${namespacePrefix}${functionName} function.`);
+    // console.log(`parsedDataFile is: ${JSON.stringify(parsedDataFile)}`);
+    // console.log(`End: ${namespacePrefix}${functionName} function.`);
     return parsedDataFile;
 };
 
@@ -122,13 +122,13 @@ function loadAllJsonData(filesToLoad, contextName) {
 function preprocessJsonFile(fileToLoad) {
     // Set function name, log beginning of function.
     let functionName = preprocessJsonFile.name;
-    console.log(`Begin: ${namespacePrefix}${functionName} function.`);
-    console.log(`fileToLoad is: ${fileToLoad}.`);
+    // console.log(`Begin: ${namespacePrefix}${functionName} function.`);
+    // console.log(`fileToLoad is: ${fileToLoad}.`);
 
     let dataFile = fileOperations.getJsonData(fileToLoad);
 
-    console.log(`dataFile is: ${JSON.stringify(dataFile)}`);
-    console.log(`End: ${namespacePrefix}${functionName} function.`);
+    // console.log(`dataFile is: ${JSON.stringify(dataFile)}`);
+    // console.log(`End: ${namespacePrefix}${functionName} function.`);
     return dataFile;
 };
 

@@ -34,18 +34,18 @@ function consoleLog(classPath, message) {
     if (Object.keys(D).length !== 0) {
         let consoleLogEnabled = configurator.getConfigurationSetting('consoleLogEnabled');
         if (consoleLogEnabled) {
-            console.log(`BEGIN loggers.consoleLog function`);
-            console.log(`classPath is: ${classPath}`);
-            console.log(`message is: ${message}`);
+            // console.log(`BEGIN loggers.consoleLog function`);
+            // console.log(`classPath is: ${classPath}`);
+            // console.log(`message is: ${message}`);
 
             let logFile = configurator.getConfigurationSetting('applicationCleanedRootPath');
             if (logFile !== undefined) {
                 logFile = `${logFile}//logs`;
-                console.log(`LogFile before path.resolve is: ${logfile}`);
+                // console.log(`LogFile before path.resolve is: ${logfile}`);
                 logFile = path.resolve(logFile);
-                console.log(`LogFile after path.resolve is: ${logfile}`);
+                // console.log(`LogFile after path.resolve is: ${logfile}`);
                 logFile = logFile + `//` + configurator.getConfigurationSetting('logFilePathAndName');
-                console.log(`LogFile after path name addition is: ${logfile}`);
+                // console.log(`LogFile after path name addition is: ${logfile}`);
             }
 
             let debugFunctionSetting = false;
@@ -55,7 +55,7 @@ function consoleLog(classPath, message) {
             let configurationName = '';
             let configurationNamespace = '';
 
-            console.log(`END loggers.consoleLog function`);
+            // console.log(`END loggers.consoleLog function`);
         }
     }
 }
