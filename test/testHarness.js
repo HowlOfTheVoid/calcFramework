@@ -28,7 +28,7 @@ let namespacePrefix = `${baseFileName}.`
 function bootstrapApplication() {
     // Set function name, log beginning of function.
     let functionName = bootstrapApplication.name;
-    console.log(`Begin: ${namespacePrefix}${functionName} function.`);
+    // console.log(`Begin: ${namespacePrefix}${functionName} function.`);
 
     rootPath = path.resolve(process.cwd());
     let appConfig = {
@@ -38,7 +38,7 @@ function bootstrapApplication() {
     };
     calcFramework.initFramework(appConfig);
 
-    console.log(`End: ${namespacePrefix}${functionName} function.`);
+    // console.log(`End: ${namespacePrefix}${functionName} function.`);
 };
 
 /**
@@ -59,16 +59,16 @@ function application() {
 
     if (argumentDrivenInterface === false) {
         // console.log(`Begin Main program loop`);
-        // console.log(`Begin command parser:`);
+        console.log(`Begin command parser:`);
 
         while (programRunning === true) {
             commandInput = prompt(`>`);
-            console.log(`Command Input is: ${commandInput}`)
+            // console.log(`Command Input is: ${commandInput}`)
             if (commandInput.toUpperCase() == 'EXIT') {
                 console.log(`End command parser!`);
                 programRunning = false;
-                console.log(`End Main program loop`);
-                console.log(`Exiting Test Harness.`);
+                // console.log(`End Main program loop`);
+                // console.log(`Exiting Test Harness.`);
             }
         }
     }

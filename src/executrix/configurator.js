@@ -25,9 +25,9 @@ let namespacePrefix = `executrix.${baseFileName}.`
 function setConfigurationSetting(configurationName, configurationValue) {
     // Set function name, log beginning of function.
     let functionName = setConfigurationSetting.name;
-    console.log(`Begin: ${namespacePrefix}${functionName} function.`);
-    console.log(`Configuration Name is: ${configurationName}.`);
-    console.log(`Configuration Value is: ${configurationValue}.`);
+    // console.log(`Begin: ${namespacePrefix}${functionName} function.`);
+    // console.log(`Configuration Name is: ${configurationName}.`);
+    // console.log(`Configuration Value is: ${configurationValue}.`);
 
     let configurationDataRoot = D['configuration'];
     if (!configurationDataRoot) {
@@ -36,7 +36,7 @@ function setConfigurationSetting(configurationName, configurationValue) {
     }
     configurationDataRoot[configurationName] = configurationValue;
 
-    console.log(`End: ${namespacePrefix}${functionName} function.`);
+    // console.log(`End: ${namespacePrefix}${functionName} function.`);
     
 };
 
