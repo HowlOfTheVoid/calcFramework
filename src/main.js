@@ -26,8 +26,8 @@ let namespacePrefix = `framework.${baseFileName}.`
 function initFramework(clientConfiguration) {
     // Set function name, log beginning of function.
     let functionName = initFramework.name;
-    console.log(`Begin: ${namespacePrefix}${functionName} function.`);
-    console.log(`clientConfiguration is: ${JSON.stringify(clientConfiguration)}.`);
+    // console.log(`Begin: ${namespacePrefix}${functionName} function.`);
+    // console.log(`clientConfiguration is: ${JSON.stringify(clientConfiguration)}.`);
 
     let appRootPath = warden.processRootPath(clientConfiguration);
     clientConfiguration['appRootPath'] = appRootPath;
@@ -35,7 +35,7 @@ function initFramework(clientConfiguration) {
     clientConfiguration['frameworkConfigPath'] = __dirname + '//resources//configuration';
     warden.initFrameworkSchema(clientConfiguration);
 
-    console.log(`End: ${namespacePrefix}${functionName} function.`);
+    // console.log(`End: ${namespacePrefix}${functionName} function.`);
 
 };
 

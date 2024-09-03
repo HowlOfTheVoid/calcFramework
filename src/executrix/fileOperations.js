@@ -34,8 +34,8 @@ let namespacePrefix = `brokers.${baseFileName}.`
 function getJsonData(pathAndFileName) {
     // Set function name, log beginning of function.
     let functionName = getJsonData.name;
-    console.log(`Begin: ${namespacePrefix}${functionName} function.`);
-    console.log(`pathAndFileName is: ${pathAndFileName}.`);
+    // console.log(`Begin: ${namespacePrefix}${functionName} function.`);
+    // console.log(`pathAndFileName is: ${pathAndFileName}.`);
     let rawData, parsedData
     try {
         pathAndFileName = path.resolve(pathAndFileName);
@@ -45,8 +45,8 @@ function getJsonData(pathAndFileName) {
         console.log("ERROR: " + err.message);
     }
 
-    console.log(`parsedData is: ${JSON.stringify(parsedData)}`);
-    console.log(`End: ${namespacePrefix}${functionName} function.`);
+    // console.log(`parsedData is: ${JSON.stringify(parsedData)}`);
+    // console.log(`End: ${namespacePrefix}${functionName} function.`);
     return parsedData;
 };
 
@@ -61,8 +61,8 @@ function getJsonData(pathAndFileName) {
 function readDirectoryContents(directory) {
     // Set function name, log beginning of function.
     let functionName = readDirectoryContents.name;
-    console.log(`Begin: ${namespacePrefix}${functionName} function.`);
-    console.log(`directory is: ${directory}.`);
+    // console.log(`Begin: ${namespacePrefix}${functionName} function.`);
+    // console.log(`directory is: ${directory}.`);
 
     let filesFound = [];
     // Resolve path on local system
@@ -72,23 +72,25 @@ function readDirectoryContents(directory) {
     filesCollection = undefined; // Clear it to avoid corrupting other file operations.
     filesCollection = [];
 
-    console.log(`filesFound is: ${JSON.stringify(filesFound)}`)
-    console.log(`End: ${namespacePrefix}${functionName} function.`);
+    // console.log(`filesFound is: ${JSON.stringify(filesFound)}`)
+    // console.log(`End: ${namespacePrefix}${functionName} function.`);
     return filesFound;
 }
 
 /**
  * @function readDirectorySynchronously
- * @description 
+ * @description Recursively parses through all sub-folders, loads all names of files contained in each subfolder to an array.
  * @param {string} directory Path to be scanned.
+ * @returns {array<string>} Array of all the contained in all levels in folders/subfolders.
+ * @NOTE Doesn't return anything, actually - File data is stored in global fileCollection variable.
  * @author Ethan Graupmann
  * @date 9/3/2024
  */
 function readDirectorySynchronously(directory) {
     // Set function name, log beginning of function.
     let functionName = readDirectorySynchronously.name;
-    console.log(`Begin: ${namespacePrefix}${functionName} function.`);
-    console.log(`directory is: ${directory}.`);
+    // console.log(`Begin: ${namespacePrefix}${functionName} function.`);
+    // console.log(`directory is: ${directory}.`);
 
     if (hitFileLimit === false) {
         directory = path.resolve(directory);
@@ -133,7 +135,7 @@ function readDirectorySynchronously(directory) {
                     // Ideal situation would be to detect which OS, then handle appropriately.
                     let directoryPath = '';
                     directoryPath = path.resolve(directory + '//' + file);
-                    console.log(`Directory path is: ${directoryPath}`);
+                    // console.log(`Directory path is: ${directoryPath}`);
                     readDirectorySynchronously(directoryPath);
                 }
             } catch (err) {
@@ -141,7 +143,7 @@ function readDirectorySynchronously(directory) {
             }
         });
     }
-    console.log(`End: ${namespacePrefix}${functionName} function.`);
+    // console.log(`End: ${namespacePrefix}${functionName} function.`);
 };
 
 /**
@@ -156,12 +158,12 @@ function readDirectorySynchronously(directory) {
 function cleanRootPath() {
     // Set function name, log beginning of function.
     let functionName = cleanRootPath.name;
-    console.log(`Begin: ${namespacePrefix}${functionName} function.`);
+    // console.log(`Begin: ${namespacePrefix}${functionName} function.`);
 
     let rootPath;
 
-    console.log(`rootPath is: ${rootPath}`);
-    console.log(`End: ${namespacePrefix}${functionName} function.`);
+    // console.log(`rootPath is: ${rootPath}`);
+    // console.log(`End: ${namespacePrefix}${functionName} function.`);
     return rootPath;
 
 }

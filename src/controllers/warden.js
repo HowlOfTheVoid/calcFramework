@@ -31,8 +31,8 @@ let namespacePrefix = `controllers.${baseFileName}.`
 function processRootPath(configData) {
     // Set function name, log beginning of function.
     let functionName = processRootPath.name;
-    console.log(`Begin: ${namespacePrefix}${functionName} function.`);
-    console.log(`clientConfiguration is: ${JSON.stringify(configData)}.`);
+    // console.log(`Begin: ${namespacePrefix}${functionName} function.`);
+    // console.log(`clientConfiguration is: ${JSON.stringify(configData)}.`);
 
     // &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
     let applicationName = configData['applicationName'];
@@ -40,7 +40,7 @@ function processRootPath(configData) {
     let resolvedPath = '';
 
     let pathElements = pathToProcess.split('\\');
-    console.log(`Path Elements are: ${JSON.stringify(pathElements)}`);
+    // console.log(`Path Elements are: ${JSON.stringify(pathElements)}`);
     loop1:
     for (let i = 0; i < pathElements.length; i++) {
         let pathElement = pathElements[i];
@@ -55,8 +55,8 @@ function processRootPath(configData) {
     }
     // &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
     let rootPath = path.resolve(resolvedPath);
-    console.log(`Root Path is: ${rootPath}`);
-    console.log(`End: ${namespacePrefix}${functionName} function.`);
+    // console.log(`Root Path is: ${rootPath}`);
+    // console.log(`End: ${namespacePrefix}${functionName} function.`);
     return rootPath;
 };
 
@@ -71,14 +71,14 @@ function processRootPath(configData) {
 function initFrameworkSchema(configData) {
     // Set function name, log beginning of function.
     let functionName = initFrameworkSchema.name;
-    console.log(`Begin: ${namespacePrefix}${functionName} function.`);
-    console.log(`clientConfiguration is: ${JSON.stringify(configData)}.`);
+    // console.log(`Begin: ${namespacePrefix}${functionName} function.`);
+    // console.log(`clientConfiguration is: ${JSON.stringify(configData)}.`);
 
     let appConfigPath = configData['appConfigPath'];
     let frameworkConfigPath = configData['frameworkConfigPath'];
     chiefConfiguration.setupConfiguration(appConfigPath, frameworkConfigPath);
 
-    console.log(`End: ${namespacePrefix}${functionName} function.`);
+    // console.log(`End: ${namespacePrefix}${functionName} function.`);
 };
 
 module.exports = {

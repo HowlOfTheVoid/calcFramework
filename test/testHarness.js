@@ -51,15 +51,15 @@ function bootstrapApplication() {
 function application() {
     // Set function name, log beginning of function.
     let functionName = application.name;
-    console.log(`Begin: ${namespacePrefix}${functionName} function.`);
+    // console.log(`Begin: ${namespacePrefix}${functionName} function.`);
 
     let argumentDrivenInterface = false;
     let commandInput;
     let commandResult;
 
     if (argumentDrivenInterface === false) {
-        console.log(`Begin Main program loop`);
-        console.log(`Begin command parser:`);
+        // console.log(`Begin Main program loop`);
+        // console.log(`Begin command parser:`);
 
         while (programRunning === true) {
             commandInput = prompt(`>`);
@@ -73,7 +73,7 @@ function application() {
         }
     }
 
-    console.log(`End: ${namespacePrefix}${functionName} function.`);
+    // console.log(`End: ${namespacePrefix}${functionName} function.`);
 }
 
 // Launch the Test Application
