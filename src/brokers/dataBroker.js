@@ -27,13 +27,13 @@ let namespacePrefix = `brokers.${baseFileName}.`
 function scanDataPath(dataPath) {
     // Set function name, log beginning of function.
     let functionName = scanDataPath.name;
-    console.log(`Begin: ${namespacePrefix}${functionName} function.`);
-    console.log(`dataPath is: ${dataPath}.`);
+    // console.log(`Begin: ${namespacePrefix}${functionName} function.`);
+    // console.log(`dataPath is: ${dataPath}.`);
 
     let filesFound = fileOperations.readDirectoryContents(dataPath);
 
-    console.log(`filesFound is: ${filesFound}`);
-    console.log(`End: ${namespacePrefix}${functionName} function.`);
+    // console.log(`filesFound is: ${filesFound}`);
+    // console.log(`End: ${namespacePrefix}${functionName} function.`);
     return filesFound;
 }
 
@@ -49,9 +49,9 @@ function scanDataPath(dataPath) {
 function loadAllJsonData(filesToLoad, contextName) {
     // Set function name, log beginning of function.
     let functionName = loadAllJsonData.name;
-    console.log(`Begin: ${namespacePrefix}${functionName} function.`);
-    console.log(`filesToLoad is: ${JSON.stringify(filesToLoad)}.`);
-    console.log(`contextName is: ${contextName}.`);
+    // console.log(`Begin: ${namespacePrefix}${functionName} function.`);
+    // console.log(`filesToLoad is: ${JSON.stringify(filesToLoad)}.`);
+    // console.log(`contextName is: ${contextName}.`);
 
     let foundSystemData = false;
     let systemConfigFileName = 'framework.system.json';
