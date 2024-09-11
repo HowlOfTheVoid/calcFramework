@@ -66,12 +66,13 @@ function loadAllJsonData(filesToLoad, contextName) {
         if (fileToLoad.includes(systemConfigFileName) || fileToLoad.includes(applicationConfigFileName)) {
             let dataFile = preprocessJsonFile(fileToLoad);
 
-            // In this case we have just loaded either framework config data, or app config data.
-            //   nothing else. So we can assign the data to the multiMergedData.
-            //   We'll need to merge all other files, but there will be a setting to determine if the
-            //   data needs to be loaded or not.
-            // We will have a new setting that determines if all extra debug settings should be loaded
-            //   This optimizes the runtime, as debug can extend load times greatly.
+            /** In this case we have just loaded either framework config data, or app config data.
+            *    nothing else. So we can assign the data to the multiMergedData.
+            *    We'll need to merge all other files, but there will be a setting to determine if the
+            *    data needs to be loaded or not.
+            *   We will have a new setting that determines if all extra debug settings should be loaded
+            *    This optimizes the runtime, as debug can extend load times greatly.
+            */
             multiMergedData['system'] = {};
             multiMergedData['system'] = dataFile;
             foundSystemData = true;

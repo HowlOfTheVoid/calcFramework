@@ -4,6 +4,7 @@
  * @description Contians all the functions to manage the application framework at the highest level
  *     Provides an interface to easily manage all framework features and functionality from one entry point.
  * @requires module:chiefConfiguration
+ * @requires module:ruleBroker
  * @requires {@link https://www.npmjs.com/package/path|path}
  * @author Ethan Graupmann
  * @date 8/26/2024
@@ -13,6 +14,7 @@
 
 // Set up requirements and namespace.
 let chiefConfiguration = require('./chiefConfiguration');
+let ruleBroker = require('../brokers/ruleBroker');
 let path = require('path');
 let baseFileName = path.basename(module.filename, path.extname(module.filename));
 let namespacePrefix = `controllers.${baseFileName}.`
@@ -34,27 +36,15 @@ function processRootPath(configData) {
     // console.log(`Begin: ${namespacePrefix}${functionName} function.`);
     // console.log(`clientConfiguration is: ${JSON.stringify(configData)}.`);
 
-    // &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+    let rules = [];
+    rules[0] = 'parseSystemRulePath';
+    ruleBroker.bootStrapBusinessRules();
+
     let applicationName = configData['applicationName'];
     let pathToProcess = configData['rootPath'];
-    let resolvedPath = '';
-
-    let pathElements = pathToProcess.split('\\');
-    // console.log(`Path Elements are: ${JSON.stringify(pathElements)}`);
-    loop1:
-    for (let i = 0; i < pathElements.length; i++) {
-        let pathElement = pathElements[i];
-        if (i === 0) {
-            resolvedPath = pathElement;
-        } else if (pathElement === applicationName) {
-            resolvedPath = resolvedPath + '\\' + pathElement + '\\';
-            break loop1;
-        } else {
-            resolvedPath = resolvedPath + '\\' + pathElement;
-        }
-    }
-    // &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+    let resolvedPath = ruleBroker.processRules(pathToProcess, applicationName, rules);
     let rootPath = path.resolve(resolvedPath);
+
     // console.log(`Root Path is: ${rootPath}`);
     // console.log(`End: ${namespacePrefix}${functionName} function.`);
     return rootPath;
